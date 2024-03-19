@@ -3,26 +3,16 @@ import './App.css';
 import * as React from 'react';
 import Button from '@mui/joy/Button';
 import Navbar from './Navbar';
+import { Typography } from '@mui/material';
 
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
+        <Typography variant='h2'>Greenhouse Controller</Typography>
+        <br></br>
         <Navbar/>
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          GREENHOUSE CLIENT DEV - LIAM IS THE BEST!!!!!
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-        <Button variant="outlined">Hello world</Button>
 
       </header>
     </div>
@@ -30,4 +20,4 @@ function App() {
 }
 
 
-export default App;
+export default App; 
