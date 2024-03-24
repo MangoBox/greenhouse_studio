@@ -21,7 +21,7 @@ function DataPanel() {
 
     var displays = !points ? <CircularProgress color="success"/> : points.map((point) => 
             <Box>
-                {DataDisplay(point.title, point.value, point.prefix, point.suffix, point.buttons)}
+                {DataDisplay(point.title, point.value, point.prefix, point.suffix, point.minValue, point.maxValue, point.buttons)}
             </Box>
     );
 

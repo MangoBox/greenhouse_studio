@@ -10,8 +10,22 @@ import Button from '@mui/joy/Button';
 import Box from '@mui/joy/Box';
 
 
-export default function DataDisplay(title, value, prefix='', suffix='', buttons=null) {
-    var progressBar = !isNaN(value) ? <><br></br><LinearProgress color="success" value={value} determinate="true"/></> : '';
+export default function DataDisplay(title, value, prefix='', suffix='', minValue=0, maxValue=100, buttons=null) {
+
+    if(!isNaN(value)) {
+        if (value < minValue) {
+            value = minValue;
+        }
+        if (value > maxValue) {
+            value = maxValue;
+        }
+    }
+
+    var scaledValue = 100 * (value - minValue) / (maxValue - minValue);
+
+
+    
+    var progressBar = !isNaN(value) ? <><br></br><LinearProgress color="success" value={scaledValue} determinate="true"/></> : '';
 
     var button_elements = !buttons ? '' : buttons.map((button) =>
         <Button color="success" >{button.name}</Button>
