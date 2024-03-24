@@ -8,7 +8,7 @@ function DataPanel() {
     const [points, setPoints] = useState(null);
 
     useEffect(() => {
-    fetch('http://localhost:80/get')
+    fetch('/get')
         .then(res => res.json())
         // .then(data => console.log(data))
         // .catch(error => console.error(error))
@@ -21,7 +21,7 @@ function DataPanel() {
 
     var displays = !points ? <CircularProgress color="success"/> : points.map((point) => 
             <Box>
-                {DataDisplay(point.title, point.value, point.prefix, point.suffix)}
+                {DataDisplay(point.title, point.value, point.prefix, point.suffix, point.buttons)}
             </Box>
     );
 

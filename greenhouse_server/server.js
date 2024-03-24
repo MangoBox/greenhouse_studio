@@ -28,6 +28,6 @@ app.get('/get', (req, res) => {
   res.send([
     { title: 'Humidity', suffix: '%', value: 50, prefix: ''},
     { title: 'Temperature', suffix: 'C', value: 24.5, prefix: ''},
-    { title: 'Vent', value: "Open", prefix: ''},
+    { title: 'Vent', value: "Open", prefix: '', buttons: [{name: 'Open'}, {name: 'Close'}] },
   ]);
 })

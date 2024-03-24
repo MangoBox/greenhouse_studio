@@ -6,10 +6,16 @@ import Sheet from '@mui/joy/Sheet';
 import Stack from '@mui/joy/Stack';
 import LinearProgress from '@mui/joy/LinearProgress';
 import { useState, useEffect } from "react";
+import Button from '@mui/joy/Button';
+import Box from '@mui/joy/Box';
 
 
-export default function DataDisplay(title, value, prefix='', suffix='') {
+export default function DataDisplay(title, value, prefix='', suffix='', buttons=null) {
     var progressBar = !isNaN(value) ? <><br></br><LinearProgress color="success" value={value} determinate="true"/></> : '';
+
+    var button_elements = !buttons ? '' : buttons.map((button) =>
+        <Button color="success" >{button.name}</Button>
+    );
 
     return (
         <Card>
@@ -17,6 +23,8 @@ export default function DataDisplay(title, value, prefix='', suffix='') {
                 <Stack direction="row" spacing={1} alignItems="center" justifyContent="space-between">
                     {/* {point ? <Typography variant="h6">{point.some}</Typography> : "Loading..."} */}
                     <Typography variant="h6">{title}</Typography>
+                    <Box sx={{ flexGrow: 1 }}/>
+                    {button_elements}
                     <Typography variant="h4">{prefix}{value}{suffix}</Typography>
                     
                 </Stack>
