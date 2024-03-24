@@ -9,6 +9,7 @@ import Box from '@mui/joy/Box';
 
 import Container from '@mui/joy/Container';
 import DataDisplay from "./DataDisplay";
+import DataPanel from "./DataPanel";
 
 export default function Navbar() {
     return (
@@ -20,13 +21,7 @@ export default function Navbar() {
                     <Tab color="success">Settings</Tab>
                 </TabList>
                 <TabPanel value={0}>
-                    Last updated 08:32
-                    <>
-                        <DataDisplay title="Temperature" value={23.4} suffix="°C"/>
-                        <DataDisplay title="Humidity" value={65.4} suffix="%"/>
-                        <DataDisplay title="Vent Status" value="Open"/>
-                    </>
-                    
+                    <DataPanel/>
                 </TabPanel>
                 <TabPanel value={1}>
                     <b>Second</b> tab panel

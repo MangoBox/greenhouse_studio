@@ -25,5 +25,9 @@ app.listen(port, () => {
 app.use(express.static(path.join(__dirname, '../greenhouse_client/build')));
 
 app.get('/get', (req, res) => {
-  res.send({ some: 'json' });
+  res.send([
+    { title: 'Humidity', suffix: '%', value: 50, prefix: ''},
+    { title: 'Temperature', suffix: 'C', value: 24.5, prefix: ''},
+    { title: 'Vent', value: "Open", prefix: ''},
+  ]);
 })
