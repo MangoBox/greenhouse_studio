@@ -10,7 +10,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Typography variant='h2'>Greenhouse Controller</Typography>
+        <Typography variant='h2'>Greenhouse Controller yeet</Typography>
         <br></br>
         <Navbar/>
 
