@@ -21,9 +21,12 @@ export default function Navbar() {
                 </TabList>
                 <TabPanel value={0}>
                     Last updated 08:32
-                    {DataDisplay("Temperature", 23.4, '', "°C")}
-                    {DataDisplay("Humidity", 65.4, '', '%')}
-                    {DataDisplay("Vent Status", "Open")}
+                    <>
+                        <DataDisplay title="Temperature" value={23.4} suffix="°C"/>
+                        <DataDisplay title="Humidity" value={65.4} suffix="%"/>
+                        <DataDisplay title="Vent Status" value="Open"/>
+                    </>
+                    
                 </TabPanel>
                 <TabPanel value={1}>
                     <b>Second</b> tab panel
