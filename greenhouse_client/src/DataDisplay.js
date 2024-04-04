@@ -22,9 +22,6 @@ export default function DataDisplay(title, value, prefix='', suffix='', minValue
     }
 
     var scaledValue = 100 * (value - minValue) / (maxValue - minValue);
-
-
-    
     var progressBar = !isNaN(value) ? <><br></br><LinearProgress color="success" value={scaledValue} determinate="true"/></> : '';
 
     var button_elements = !buttons ? '' : buttons.map((button) =>
