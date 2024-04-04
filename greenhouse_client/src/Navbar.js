@@ -7,8 +7,6 @@ import Tab from '@mui/joy/Tab';
 import TabPanel from '@mui/joy/TabPanel'; 
 import Box from '@mui/joy/Box';
 
-import Container from '@mui/joy/Container';
-import DataDisplay from "./DataDisplay";
 import DataPanel from "./DataPanel";
 
 export default function Navbar() {

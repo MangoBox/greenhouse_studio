@@ -12,7 +12,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Typography variant='h2'>Greenhouse Controller</Typography>
-        <br></br>
+        <br/>
         <Navbar/>
 
       </header>

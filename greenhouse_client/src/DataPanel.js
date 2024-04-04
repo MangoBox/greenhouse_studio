@@ -8,7 +8,7 @@ function DataPanel() {
     const [points, setPoints] = useState(null);
 
     useEffect(() => {
-    fetch('/get')
+    fetch('http://localhost:2000/get')
         .then(res => res.json())
         // .then(data => console.log(data))
         // .catch(error => console.error(error))

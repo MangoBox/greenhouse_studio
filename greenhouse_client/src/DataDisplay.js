@@ -2,10 +2,8 @@ import * as React from "react";
 import Card from "@mui/joy/Card";
 import CardContent from "@mui/joy/CardContent";
 import Typography from "@mui/material/Typography";
-import Sheet from '@mui/joy/Sheet';
 import Stack from '@mui/joy/Stack';
 import LinearProgress from '@mui/joy/LinearProgress';
-import { useState, useEffect } from "react";
 import Button from '@mui/joy/Button';
 import Box from '@mui/joy/Box';
 
@@ -22,7 +20,7 @@ export default function DataDisplay(title, value, prefix='', suffix='', minValue
     }
 
     var scaledValue = 100 * (value - minValue) / (maxValue - minValue);
-    var progressBar = !isNaN(value) ? <><br></br><LinearProgress color="success" value={scaledValue} determinate="true"/></> : '';
+    var progressBar = !isNaN(value) ? <><br/><LinearProgress color="success" value={scaledValue} determinate="true"/></> : '';
 
     var button_elements = !buttons ? '' : buttons.map((button) =>
         <Button color="success" >{button.name}</Button>
