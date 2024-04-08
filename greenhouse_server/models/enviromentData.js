@@ -9,10 +9,6 @@ const enviromentDataSchema = new mongoose.Schema({
         type: Date,
         // reqired: true,
     },
-    // "date" : { 
-    //     type: Date,
-    //     reqired: true,
-    // },
     "temperature" : { 
         type: Number,
         // reqired: true,
