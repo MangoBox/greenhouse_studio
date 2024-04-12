@@ -45,8 +45,8 @@ app.get("/getBoxes", async (req, res) => {
   })
 });
 
-app.get("/getEnviromentData", async (req, res) => {
-  console.log("getEnviromentData")
+app.get("/getEnvironmentData", async (req, res) => {
+  console.log("getEnvironmentData")
   return enviromentDataModel.findOne()
   .then((result)=>{
       res.status(200).json(result);
