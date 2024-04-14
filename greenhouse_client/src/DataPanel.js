@@ -52,7 +52,7 @@ function DataPanel() {
     const [points, setPoints] = useState(null);
 
     useEffect(() => {
-    fetch('/getEnvironmentData')
+    fetch('http://localhost:2000/getEnvironmentData')
         .then(res => res.json())
         // .then(data => console.log(data))
         // .catch(error => console.error(error))
@@ -61,11 +61,10 @@ function DataPanel() {
         }).then(data => console.log(data));
     }, []);
 
-
     // Display time component.
     var last_updated = points ? points['time'] ?? "Loading..." : "Loading..."; 
     var last_updated_display = <Box>Loading...</Box>;;
-    if(last_updated != "Loading...") {
+    if(last_updated !== "Loading...") {
         var now = Date.now();
 
         //Create delta time to display how long ago the data was last updated.
