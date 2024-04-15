@@ -6,7 +6,7 @@ import TabList from '@mui/joy/TabList';
 import Tab from '@mui/joy/Tab';
 import TabPanel from '@mui/joy/TabPanel'; 
 import Box from '@mui/joy/Box';
-
+import HomePage from "./HomePage";
 import DataPanel from "./DataPanel";
 
 export default function Navbar() {
@@ -20,7 +20,7 @@ export default function Navbar() {
                     <Tab color="success">Settings</Tab>
                 </TabList>
                 <TabPanel value ={0}>
-                    <b>home</b>
+                    <HomePage/>
                 </TabPanel>
                 <TabPanel value={1}>
                     <DataPanel/>
