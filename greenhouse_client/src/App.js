@@ -30,14 +30,13 @@ function App() {
       <header className="App-header">
         <Typography variant='h2'>Greenhouse Controller</Typography>
 
-
-        <Select defaultValue={user}>
-          {userList.map((user) => {
+        <Select>
+          {userList.map((user, key) => {
             return <Option value={user.username}>{user.name}</Option>
           })}
         </Select>
         <br/>
-        <Navbar/>
+        <Navbar user={user} setUser={setUser}/>
 
       </header>
     </div>

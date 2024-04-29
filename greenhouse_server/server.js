@@ -34,14 +34,12 @@ mongoose.connect(
   "mongodb+srv://server:greenhouse123@box-cluster.ceucbnf.mongodb.net/box-time-data?retryWrites=true&w=majority&appName=box-cluster"
 );
 
-app.post("/getBoxes", async (req, res) => {
+app.get("/getBoxes", async (req, res) => {
   // Get the userid from the request body
-  const { userid } = req.body;
-
-  console.log("getBoxes with userid:", userid);
-
-  // Query the database for records with the given userid
-  return boxesModel.find({ userid: userid })
+  const { username } = req.query;
+  console.log("username: "+username);
+  // Query the database for records with the given username
+  return boxesModel.find({ username: username })
     .then((result) => {
       res.status(200).json(result);
     })

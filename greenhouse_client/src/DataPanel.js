@@ -48,11 +48,20 @@ function CreateDisplayComponent(key, points) {
     );
 }
 
-function DataPanel() {
+function DataPanel(user, setUser) {
     const [points, setPoints] = useState(null);
 
     useEffect(() => {
-    fetch('http://localhost:2000/getEnvironmentDataPoint')
+        fetch('http://localhost:2000/getBoxes?username='+user.username)
+        .then(res => res.json())
+        .then((boxes) => {
+          console.log("BOX: ");
+          console.log(boxes);
+        })
+    }, [user]);
+
+    useEffect(() => {
+        fetch('http://localhost:2000/getEnvironmentDataPoint')
         .then(res => res.json())
         // .then(data => console.log(data))
         // .catch(error => console.error(error))
