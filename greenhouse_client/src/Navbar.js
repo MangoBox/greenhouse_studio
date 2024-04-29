@@ -25,14 +25,12 @@ export default function Navbar() {
                 </TabPanel>
                 <TabPanel value={1}>
                     <DataPanel/>
-                    <b>Second</b> tab panel
                 </TabPanel>
                 <TabPanel value={2}>
-                    <b>Second</b> tab panel
                     <DetailedDisplay/>
                 </TabPanel>
                 <TabPanel value={3}>
-                    <b>Third</b> tab panel
+                    <b>Settings Placeholder</b>
                 </TabPanel>
 
             </Tabs>
