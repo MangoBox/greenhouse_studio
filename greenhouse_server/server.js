@@ -37,7 +37,8 @@ mongoose.connect(
 app.get("/getBoxes", async (req, res) => {
   // Get the userid from the request body
   const { username } = req.query;
-  console.log("username: "+username);
+  console.log(username);
+  // console.log("username: "+username);
   // Query the database for records with the given username
   return boxesModel.find({ username: username })
     .then((result) => {

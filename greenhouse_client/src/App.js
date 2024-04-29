@@ -14,6 +14,12 @@ function App() {
   const [user, setUser] = useState('user1'); 
   const [userList, setUserLits] = useState([]); 
   
+
+  const handleSelect = (event, user) => {
+    console.log(user)
+    setUser(user);
+  }
+  
   useEffect(() => {
     fetch('http://localhost:2000/getUsers')
         .then(res => res.json())
@@ -30,9 +36,9 @@ function App() {
       <header className="App-header">
         <Typography variant='h2'>Greenhouse Controller</Typography>
 
-        <Select>
+        <Select onChange={handleSelect}>
           {userList.map((user, key) => {
-            return <Option value={user.username}>{user.name}</Option>
+            return <Option key={user} value={user}>{user.name}</Option>
           })}
         </Select>
         <br/>

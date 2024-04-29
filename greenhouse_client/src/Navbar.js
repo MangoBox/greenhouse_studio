@@ -10,7 +10,7 @@ import HomePage from "./HomePage";
 import DataPanel from "./DataPanel";
 import DetailedDisplay from "./DetailedDisplay";
 
-export default function Navbar(user, setUser) {
+export default function Navbar({user, setUser}) {
     return (
         <Box sx={{ width: '100%' }} >
             <Tabs aria-label="Basic tabs" defaultValue={0} >

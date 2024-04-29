@@ -48,14 +48,14 @@ function CreateDisplayComponent(key, points) {
     );
 }
 
-function DataPanel(user, setUser) {
+function DataPanel({user, setUser}) {
     const [points, setPoints] = useState(null);
 
     useEffect(() => {
-        fetch('http://localhost:2000/getBoxes?username='+user.username)
+        fetch(`http://localhost:2000/getBoxes?username=${user.username}`)
         .then(res => res.json())
         .then((boxes) => {
-          console.log("BOX: ");
+          console.log("BOX");
           console.log(boxes);
         })
     }, [user]);
