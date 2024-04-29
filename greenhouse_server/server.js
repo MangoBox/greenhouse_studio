@@ -13,7 +13,7 @@ const port = process.env.PORT || 5000;
 const path = require('path');
 app.use(cors());
 app.use(express.json());
-app.use(require("./routes/record"));
+// app.use(require("./routes/record"));
 
 
 
@@ -34,9 +34,25 @@ mongoose.connect(
   "mongodb+srv://server:greenhouse123@box-cluster.ceucbnf.mongodb.net/box-time-data?retryWrites=true&w=majority&appName=box-cluster"
 );
 
-app.get("/getBoxes", async (req, res) => {
-  console.log("getBoxes")
-  return boxesModel.find()
+app.post("/getBoxes", async (req, res) => {
+  // Get the userid from the request body
+  const { userid } = req.body;
+
+  console.log("getBoxes with userid:", userid);
+
+  // Query the database for records with the given userid
+  return boxesModel.find({ userid: userid })
+    .then((result) => {
+      res.status(200).json(result);
+    })
+    .catch((error) => {
+      res.status(500).json(error);
+    });
+});
+
+app.get("/getEnvironmentDataPoint", async (req, res) => {
+  console.log("getEnvironmentData")
+  return enviromentDataModel.findOne({boxId: 1})
   .then((result)=>{
       res.status(200).json(result);
   })
@@ -47,7 +63,7 @@ app.get("/getBoxes", async (req, res) => {
 
 app.get("/getEnvironmentData", async (req, res) => {
   console.log("getEnvironmentData")
-  return enviromentDataModel.findOne()
+  return enviromentDataModel.find({boxId: 1})
   .then((result)=>{
       res.status(200).json(result);
   })

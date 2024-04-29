@@ -52,7 +52,7 @@ function DataPanel() {
     const [points, setPoints] = useState(null);
 
     useEffect(() => {
-    fetch('http://localhost:2000/getEnvironmentData')
+    fetch('http://localhost:2000/getEnvironmentDataPoint')
         .then(res => res.json())
         // .then(data => console.log(data))
         // .catch(error => console.error(error))
