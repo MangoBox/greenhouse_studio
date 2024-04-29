@@ -32,7 +32,6 @@ export default function Navbar() {
                     <b>Third</b> tab panel
                 </TabPanel>
             </Tabs>
-    </Box>
-        
+        </Box>
     );
 }

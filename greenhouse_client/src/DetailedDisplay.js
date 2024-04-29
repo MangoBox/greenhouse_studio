@@ -12,16 +12,15 @@ export const data = [
     ["8pm", 24.5],
     ["9pm", 27.3],
     ["10pm", 17.3],
-  ];
-  
-  export const options = {
+];
+
+export const options = {
     title: "Temperature",
     curveType: "function",
     legend: { position: "bottom" },
-  };
+};
 
 function getGraph() {
-    
       return (
         <Chart
           chartType="LineChart"
