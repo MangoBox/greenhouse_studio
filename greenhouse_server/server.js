@@ -36,11 +36,11 @@ mongoose.connect(
 
 app.get("/getBoxes", async (req, res) => {
   // Get the userid from the request body
-  const { username } = req.query;
-  console.log(username);
+  const { userId } = req.query;
+  console.log(userId);
   // console.log("username: "+username);
   // Query the database for records with the given username
-  return boxesModel.find({ username: username })
+  return boxesModel.find({ userId : userId })
     .then((result) => {
       res.status(200).json(result);
     })
@@ -49,14 +49,15 @@ app.get("/getBoxes", async (req, res) => {
     });
 });
 
+
 app.get("/getEnvironmentDataPoint", async (req, res) => {
   console.log("getEnvironmentData")
-  return enviromentDataModel.findOne({boxId: 1})
+  return enviromentDataModel.findOne({boxId: 1}).sort({ time: -1 })
   .then((result)=>{
-      res.status(200).json(result);
+    res.status(200).json(result);
   })
   .catch((error)=>{
-      res.status(500).json(error)    
+    res.status(500).json(error)    
   })
 });
 

@@ -3,22 +3,21 @@ const mongoose = require("mongoose");
 const enviromentDataSchema = new mongoose.Schema({
     "boxId": {
         type: Number,
-        // required: true,
+        required: true,
     },
     "time" : { 
         type: Date,
-        // reqired: true,
+        reqired: true,
     },
     "temperature" : { 
         type: Number,
-        // reqired: true,
+        reqired: true,
     },
     "humidity" : { 
         type: Number,
-        // reqired: true,
+        reqired: true,
     }
 }, { collection: "enviromentData"});
-
 
 
 const enviromentDataModel = mongoose.model("enviromentData", enviromentDataSchema);
