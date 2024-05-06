@@ -13,11 +13,18 @@ function App() {
   
   const [user, setUser] = useState('user1'); 
   const [userList, setUserLits] = useState([]); 
-  
 
-  const handleSelect = (event, user) => {
+  const [box, setBox] = useState('box1'); 
+  const [boxList, setBoxList] = useState([]); 
+
+  const handleUserSelect = (event, user) => {
     console.log(user)
     setUser(user);
+  }
+
+  const handleBoxSelect = (event, box) => {
+    console.log(box)
+    setBox(box);
   }
   
   useEffect(() => {
@@ -30,24 +37,42 @@ function App() {
           console.log(userList);
         }).then(data => console.log(data));
     }, []);
+
+  useEffect(() => {
+      fetch(`http://localhost:2000/getBoxes?userId=${user.userId}`)
+      .then(res => res.json())
+      .then((boxList) => {
+        setBoxList(boxList);
+        console.log(boxList);
+      })
+  }, [user]);
     
   return (
     <div className="App">
       <header className="App-header">
         <Typography variant='h2'>Greenhouse Controller</Typography>
 
-        <Select onChange={handleSelect}>
+        <div style={{ display: 'flex' }}>
+          User:<Select onChange={handleUserSelect} sx={{ width: 180 }}>
           {userList.map((user, key) => {
             return <Option key={user} value={user}>{user.name}</Option>
           })}
-        </Select>
-        <br/>
-        <Navbar user={user} setUser={setUser}/>
+          </Select> 
+        </div>
+        <br></br>
+        <div style={{ display: 'flex' }}>
+          Greenhouse: <Select onChange={handleBoxSelect} sx={{ width: 180 }}>
+            {boxList.map((box, key) => {
+              return <Option key={box} value={box}>{box.boxId}</Option>
+            })}
+          </Select>
+        </div>
+        <br></br>
+        <Navbar user={user} box={box}/>
 
       </header>
     </div>
   );
 }
-
 
 export default App; 

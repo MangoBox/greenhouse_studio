@@ -48,27 +48,20 @@ function CreateDisplayComponent(key, points) {
     );
 }
 
-function DataPanel({user, setUser}) {
+function DataPanel({box, user}) {
     const [points, setPoints] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:2000/getBoxes?username=${user.username}`)
-        .then(res => res.json())
-        .then((boxes) => {
-          console.log("BOX");
-          console.log(boxes);
-        })
-    }, [user]);
-
-    useEffect(() => {
-        fetch('http://localhost:2000/getEnvironmentDataPoint')
+        fetch(`http://localhost:2000/getEnvironmentDataPoint?boxId=${box.boxId}`)
+        // fetch(`http://localhost:2000/getEnvironmentDataPoint?boxId=1`)
         .then(res => res.json())
         // .then(data => console.log(data))
-        // .catch(error => console.error(error))
         .then((points) => {
+            console.log("getEnvironmentDataPointnts")
+            console.log(points)
             setPoints(points);
         }).then(data => console.log(data));
-    }, []);
+    }, [box]);
 
     // Display time component.
     var last_updated = points ? points['time'] ?? "Loading..." : "Loading..."; 
