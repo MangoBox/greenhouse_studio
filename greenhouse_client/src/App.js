@@ -11,14 +11,15 @@ import Option from '@mui/joy/Option';
 
 function App() {
   
-  const [user, setUser] = useState('user1'); 
+  const [user, setUser] = useState(''); 
   const [userList, setUserLits] = useState([]); 
 
-  const [box, setBox] = useState('box1'); 
+  const [box, setBox] = useState(''); 
   const [boxList, setBoxList] = useState([]); 
 
   const handleUserSelect = (event, user) => {
     console.log(user)
+    setBox('')
     setUser(user);
   }
 

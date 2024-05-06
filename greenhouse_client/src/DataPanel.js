@@ -52,16 +52,17 @@ function DataPanel({box, user}) {
     const [points, setPoints] = useState(null);
 
     useEffect(() => {
-        fetch(`http://localhost:2000/getEnvironmentDataPoint?boxId=${box.boxId}`)
-        // fetch(`http://localhost:2000/getEnvironmentDataPoint?boxId=1`)
-        .then(res => res.json())
-        // .then(data => console.log(data))
-        .then((points) => {
-            console.log("getEnvironmentDataPointnts")
-            console.log(points)
-            setPoints(points);
-        }).then(data => console.log(data));
-    }, [box]);
+        if (box && box.boxId) { // Check if box and boxId are not null
+            fetch(`http://localhost:2000/getEnvironmentDataPoint?boxId=${box.boxId}`)
+                .then(res => res.json())
+                .then((points) => {
+                    setPoints(points);
+                })
+                .catch(error => console.error(error));
+        } else {
+            setPoints(null);
+        }
+    }, [box, user]);
 
     // Display time component.
     var last_updated = points ? points['time'] ?? "Loading..." : "Loading..."; 
