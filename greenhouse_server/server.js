@@ -13,7 +13,7 @@ const port = process.env.PORT || 5000;
 const path = require('path');
 app.use(cors());
 app.use(express.json());
-app.use(require("./routes/record"));
+// app.use(require("./routes/record"));
 
 
 
@@ -35,19 +35,35 @@ mongoose.connect(
 );
 
 app.get("/getBoxes", async (req, res) => {
-  console.log("getBoxes")
-  return boxesModel.find()
-  .then((result)=>{
+  // Get the userid from the request body
+  const { userId } = req.query;
+  console.log(userId);
+  // console.log("username: "+username);
+  // Query the database for records with the given username
+  return boxesModel.find({ userId : userId })
+    .then((result) => {
       res.status(200).json(result);
+    })
+    .catch((error) => {
+      res.status(500).json(error);
+    });
+});
+
+
+app.get("/getEnvironmentDataPoint", async (req, res) => {
+  console.log("getEnvironmentData")
+  return enviromentDataModel.findOne({boxId: 1}).sort({ time: -1 })
+  .then((result)=>{
+    res.status(200).json(result);
   })
   .catch((error)=>{
-      res.status(500).json(error)    
+    res.status(500).json(error)    
   })
 });
 
 app.get("/getEnvironmentData", async (req, res) => {
   console.log("getEnvironmentData")
-  return enviromentDataModel.findOne()
+  return enviromentDataModel.find({boxId: 1})
   .then((result)=>{
       res.status(200).json(result);
   })
