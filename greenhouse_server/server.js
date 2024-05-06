@@ -4,7 +4,7 @@ const cors = require("cors");
 
 const mongoose = require("mongoose")
 
-const enviromentDataModel = require("./models/enviromentData");
+const enviromentTimeDataModel = require("./models/enviromentTimeData");
 const userModel = require("./models/users");
 const boxesModel = require("./models/boxes");
 
@@ -14,8 +14,6 @@ const path = require('path');
 app.use(cors());
 app.use(express.json());
 // app.use(require("./routes/record"));
-
-
 
 // get driver connection
 //const dbo = require("./db/conn");
@@ -49,12 +47,15 @@ app.get("/getBoxes", async (req, res) => {
     });
 });
 
-
 app.get("/getEnvironmentDataPoint", async (req, res) => {
-  console.log("getEnvironmentData")
-  return enviromentDataModel.findOne({boxId: 1}).sort({ time: -1 })
+  const { boxId } = req.query;
+  console.log("getEnvironmentData, boxId: " + boxId)
+  console.log(typeof(boxId))
+  return enviromentTimeDataModel.findOne({boxId: boxId}).sort({ time: -1 })
+  // return enviromentTimeDataModel.findOne().sort({ time: -1 })
   .then((result)=>{
     res.status(200).json(result);
+    console.log(result);
   })
   .catch((error)=>{
     res.status(500).json(error)    
@@ -62,8 +63,9 @@ app.get("/getEnvironmentDataPoint", async (req, res) => {
 });
 
 app.get("/getEnvironmentData", async (req, res) => {
-  console.log("getEnvironmentData")
-  return enviromentDataModel.find({boxId: 1})
+  const { boxId } = (req.query);
+  // console.log("getEnvironmentData, boxId: " + boxId)
+  return enviromentTimeDataModel.find({boxId: boxId}).sort({ time: -1 })
   .then((result)=>{
       res.status(200).json(result);
   })

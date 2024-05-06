@@ -10,7 +10,7 @@ import HomePage from "./HomePage";
 import DataPanel from "./DataPanel";
 import DetailedDisplay from "./DetailedDisplay";
 
-export default function Navbar({user, setUser}) {
+export default function Navbar({user, box}) {
     return (
         <Box sx={{ width: '100%' }} >
             <Tabs aria-label="Basic tabs" defaultValue={0} >
@@ -24,10 +24,10 @@ export default function Navbar({user, setUser}) {
                     <HomePage/>
                 </TabPanel>
                 <TabPanel value={1}>
-                    <DataPanel user={user} setUser={setUser}/>
+                    <DataPanel user={user} box={box}/>
                 </TabPanel>
                 <TabPanel value={2}>
-                    <DetailedDisplay/>
+                    <DetailedDisplay user={user} box={box}/>
                 </TabPanel>
                 <TabPanel value={3}>
                     <b>Settings Placeholder</b>

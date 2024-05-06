@@ -2,7 +2,7 @@ import React from "react";
 import { Chart } from "react-google-charts";
 
 
-export default function DetailedDisplay() {
+export default function DetailedDisplay({user, box}) {
     return getGraph();
 }
 
