@@ -46,7 +46,7 @@ async function insertTemperatureData() {
                 _id: new ObjectId(),
                 time: new Date(timestamp),
                 temperature: generateTemperatureData(),
-                boxId: "1"
+                boxId: 1
             });
         }
 
